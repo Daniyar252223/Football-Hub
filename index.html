@@ -1,64 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Football Hub - Home</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Football Hub - Home</title>
+
+    <!-- Assignment 3: Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="page-layout">
-        <!-- Task 1: Navigation Bar (Flexbox) -->
-        <header class="header">
-            <div class="logo">
-                <img src="css/images/logo.png" alt="Football Hub Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'">
-                <span>Football Hub</span>
+
+<div class="page-layout">
+
+    <!-- ASSIGNMENT 3 - TASK 5: BOOTSTRAP NAVBAR -->
+    <header class="header">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+
+            <div class="container-fluid">
+
+                <!-- Original Football Hub logo -->
+                <a class="navbar-brand logo" href="index.html">
+
+                    <img src="css/images/logo.png"
+                         alt="Football Hub Logo"
+                         onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'">
+
+                    <span>Football Hub</span>
+
+                </a>
+
+                <!-- Hamburger button -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#homeMenu"
+                        aria-label="Open navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="homeMenu">
+
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="players.html">Players</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="matches.html">Matches</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
             </div>
-            <ul class="nav-menu">
-               <li><a style="color: aliceblue;" href="index.html">Home</a></li>
-               <li><a style="color: aliceblue;" href="players.html">Players</a></li>
-               <li><a style="color: aliceblue;" href="matches.html">Matches</a></li>
-               <li><a style="color: aliceblue;" href="contact.html">Contact</a></li>
-            </ul>
-        </header>
 
-        <!-- Task 3: Sidebar (Grid Area - Empty) -->
-<aside class="sidebar">
-    <h3>Latest News</h3>
-    <ul style="list-style: none;">
-        <li style="margin-bottom: 15px;">
-            <strong>UCL Draw Released</strong>
-            <p style="font-size: 0.85rem; color: #666; margin: 5px 0 0 0;">Group stage match schedules are finalized.</p>
-        </li>
-        <li style="margin-bottom: 15px;">
-            <strong>Golden Boot Race</strong>
-            <p style="font-size: 0.85rem; color: #666; margin: 5px 0 0 0;">Check out the top scorers in Europe this season.</p>
-        </li>
-    </ul>
-</aside>
+        </nav>
 
-        <main class="main-content">
-            <div id="box-1">
-                <h1>Football Hub</h1>
-                <p>Welcome to our main portal!</p>
+    </header>
+
+
+    <!-- ORIGINAL SIDEBAR -->
+    <aside class="sidebar">
+
+        <h3>Latest News</h3>
+
+        <ul>
+
+            <li>
+                <strong>UCL Draw Released</strong>
+
+                <p class="small-text">
+                    Group stage match schedules are finalized.
+                </p>
+            </li>
+
+            <li>
+                <strong>Golden Boot Race</strong>
+
+                <p class="small-text">
+                    Check out the top scorers in Europe this season.
+                </p>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <!-- Original title -->
+        <div id="box-1">
+
+            <h1>Football Hub</h1>
+
+            <p>Welcome to our main portal!</p>
+
+        </div>
+
+
+        <!-- ASSIGNMENT 3 - TASK 3
+             Bootstrap Grid: 2 columns -->
+
+        <section class="container px-sm-2">
+
+            <h2>About Us</h2>
+
+            <div class="row">
+
+                <div class="col-12 col-md-6 col-lg-6">
+
+                    <img src="css/images/Stadion.jpg"
+                         alt="Stadium"
+                         class="Images">
+
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-6 mt-3 mt-lg-4">
+
+                    <p>
+                        We share football top player profiles,
+                        their achievements, and match schedules.
+                    </p>
+
+                    <h3>Features</h3>
+
+                    <ul>
+                        <li>Player profiles</li>
+                        <li>Match schedules</li>
+                        <li>Contact support</li>
+                    </ul>
+
+                </div>
+
             </div>
-            <section>
-                <h2>About Us</h2>
-                <img src="css/images/Stadion.jpg" alt="Stadium" class="Images">
-                <p>We share football top player profiles, their achievements, and match schedules.</p>
-                <h3>Features</h3>
-                <ul style="color: #333; margin-left: 20px; margin-bottom: 20px;">
-                    <li>Player profiles</li>
-                    <li>Match schedules</li>
-                    <li>Contact support</li>
-                </ul>
-            </section>
-        </main>
 
-        <!-- Task 3: Footer (Grid Area) -->
-        <footer>
-            <p>Team members: Daribayev Daniyar, Nurbol Kassymbaev</p>
-        </footer>
-    </div>
+        </section>
+
+
+        <!-- ASSIGNMENT 3 - TASK 3
+             Bootstrap Grid: 3 columns -->
+
+        <section class="container mt-4 px-sm-2">
+
+            <h2>Football Hub Features</h2>
+
+            <div class="row">
+
+                <div class="col-12 col-md-6 col-lg-4 p-3">
+
+                    <h3>Players</h3>
+
+                    <p>
+                        Information about popular football players.
+                    </p>
+
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 p-3">
+
+                    <h3>Matches</h3>
+
+                    <p>
+                        Check upcoming football matches.
+                    </p>
+
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 p-3">
+
+                    <h3>Support</h3>
+
+                    <p>
+                        Contact the Football Hub team.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASSIGNMENT 3 - TASK 6: BUTTONS -->
+
+        <section class="container mt-4 px-sm-2">
+
+            <h2>Explore</h2>
+
+            <div class="btn-group">
+
+                <a href="players.html"
+                   class="btn btn-outline-dark btn-sm">
+                    Players
+                </a>
+
+                <a href="matches.html"
+                   class="btn btn-dark">
+                    Matches
+                </a>
+
+                <a href="contact.html"
+                   class="btn btn-outline-dark btn-lg">
+                    Contact
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Team members: Daribayev Daniyar, Nurbol Kassymbaev
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- Needed for hamburger menu -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
