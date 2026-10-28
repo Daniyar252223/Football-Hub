@@ -25,7 +25,7 @@
 
             <div class="container-fluid">
 
-                <!-- Original Football Hub logo -->
+           <!-- Original Football Hub logo -->
                 <a class="navbar-brand logo" href="index.html">
                     <img src="css/images/logo.png" alt="Football Hub Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'">
                     <span>Football Hub</span>
@@ -101,6 +101,32 @@
                     </ul>
                 </div>
             </div>
+        </section>
+
+
+        <!-- ASSIGNMENT 5: DOM MANIPULATION / READ MORE -->
+        <section class="container mt-4 px-sm-2 a5-panel">
+            <h2>More About Football Hub</h2>
+            <p>Football Hub brings players, matches, and football stories together.</p>
+            <div id="more-content" hidden>
+                <p>Explore famous players, learn about their achievements, and discover the clubs and fixtures featured on our website.</p>
+            </div>
+            <button type="button" id="read-more-btn" class="btn btn-dark" aria-controls="more-content" aria-expanded="false">Read More</button>
+        </section>
+
+        <!-- ASSIGNMENT 5: EVENT LISTENER AND SWITCH -->
+        <section class="container mt-4 px-sm-2 a5-panel">
+            <h2>Football Fan Zone</h2>
+            <p id="current-time" aria-live="polite">Press the button to show the current time.</p>
+            <button type="button" id="show-time-btn" class="btn btn-primary mb-2">Show Current Time</button>
+            <p id="greeting-message" aria-live="polite">Welcome to Football Hub!</p>
+            <button type="button" id="greeting-btn" class="btn btn-success">Show Greeting</button>
+        </section>
+
+        <!-- ASSIGNMENT 5: OBJECTS, ARRAYS AND LOOPS -->
+        <section class="container mt-4 px-sm-2 a5-panel">
+            <h2>Football Highlights</h2>
+            <div id="football-news" class="row g-3"></div>
         </section>
 
         <!-- ASSIGNMENT 3 - TASK 3 Bootstrap Grid: 3 columns -->
@@ -181,6 +207,7 @@
 
 <!-- Assignment 4 JS -->
 <script src="js/script.js"></script>
+<script src="js/assignment5.js"></script>
 
 </body>
 </html>
