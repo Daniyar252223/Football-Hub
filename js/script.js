@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateDateTime, 1000);
     updateDateTime();
 
-    // TASK 4: Изменение цвета фона
+    
     const bgBtn = document.getElementById("change-bg-btn");
     const colors = ["#ffffff", "#f8f9fa", "#e9ecef", "#dee2e6", "#e3f2fd", "#f1f8e9"];
     let colorIndex = 0;
@@ -48,37 +48,5 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === popupOverlay) popupOverlay.style.display = "none";
         });
     }
-
-    const contactForm = document.getElementById("contact-form");
-    const formErrors = document.getElementById("form-errors");
-
-    if (contactForm) {
-        contactForm.addEventListener("submit", function(event) {
-            event.preventDefault(); 
-            let errors = [];
-            
-            const email = document.getElementById("email").value.trim();
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirm-password").value;
-            
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                errors.push("Invalid email format.");
-            }
-            if (password.length < 6) {
-                errors.push("Password must be at least 6 characters long.");
-            }
-            if (password !== confirmPassword) {
-                errors.push("Passwords do not match.");
-            }
-            
-            if (errors.length > 0) {
-                formErrors.innerHTML = errors.join("<br>");
-                formErrors.style.color = "red";
-            } else {
-                formErrors.innerHTML = "Success! Form submitted.";
-                formErrors.style.color = "green";
-                contactForm.reset();
-            }
-        });
-    }
+ // Assignment 5 contact form is handled in js/assignment5.js.
 });
