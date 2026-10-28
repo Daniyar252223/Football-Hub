@@ -463,3 +463,106 @@ footer p {
 .close-btn:hover {
     color: red;
 }
+
+/* =========================================================
+   ASSIGNMENT 5 - JAVASCRIPT STYLES
+========================================================= */
+
+/* --- TASK 1: General Panel CSS --- */
+.a5-panel {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* --- TASK 1: Read More CSS --- */
+#more-content {
+    background: #f4f7fa;
+    border-left: 4px solid #0d6efd;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+#more-content[hidden] {
+    display: none !important;
+}
+
+/* --- TASK 2: Current Time and Greeting CSS --- */
+#current-time,
+#greeting-message {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* --- TASK 3: Football News Cards CSS --- */
+.a5-news-card {
+    height: 100%;
+    padding: 18px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.a5-news-card:hover,
+.a5-news-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
+}
+
+.a5-news-card.a5-celebrate {
+    animation: a5Pulse 0.45s ease;
+}
+
+/* --- TASK 3: News Card Animation CSS --- */
+@keyframes a5Pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- TASK 3: Player Card Animation CSS --- */
+.player-animate {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.player-animate:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+/* --- TASK 3: Match Gallery Animation CSS --- */
+.gallery-item {
+    transition: transform 0.25s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.025);
+}
+
+/* --- TASK 2: Contact Form Feedback CSS --- */
+#form-errors {
+    min-height: 1.5rem;
+}
+
+/* --- TASK 5: Accessibility and User Experience CSS --- */
+@media (prefers-reduced-motion: reduce) {
+    .a5-news-card,
+    .player-animate,
+    .gallery-item {
+        transition: none;
+    }
+
+    .a5-news-card.a5-celebrate {
+        animation: none;
+    }
+}
