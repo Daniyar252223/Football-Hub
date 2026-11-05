@@ -566,3 +566,103 @@ footer p {
         animation: none;
     }
 }
+
+/* =========================================================
+   ASSIGNMENT 6 - JQUERY STYLES
+========================================================= */
+
+/* Task 4: Scroll Progress */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #0d6efd, #ffcc00);
+    z-index: 2000;
+    transition: width 0.1s ease-out;
+}
+
+/* Task 7: Toast Notifications */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.a6-toast {
+    background-color: #212529;
+    color: #fff;
+    padding: 15px 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: none;
+    font-weight: 500;
+}
+
+/* Task 3: Highlight */
+.a6-highlight {
+    background-color: #ffeb3b;
+    font-weight: bold;
+    color: #000;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Task 2: Autocomplete Dropdown */
+.dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dropdown-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.dropdown-list li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Task 6: Spinner */
+.a6-spinner {
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: a6spin 1s linear infinite;
+    display: inline-block;
+}
+@keyframes a6spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Task 9: Lazy Load */
+.a6-lazy-image {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    transition: opacity 0.6s ease-in;
+    opacity: 0.3;
+}
+.a6-lazy-image.loaded {
+    opacity: 1;
+}

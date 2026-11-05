@@ -12,29 +12,29 @@
 
     <!-- Our CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 
 <body>
+<div id="scroll-progress"></div>
 
 <div class="page-layout">
 
-    <!-- ASSIGNMENT 3 - TASK 5: BOOTSTRAP NAVBAR -->
     <header class="header">
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 
             <div class="container-fluid">
 
-           <!-- Original Football Hub logo -->
                 <a class="navbar-brand logo" href="index.html">
                     <img src="css/images/logo.png" alt="Football Hub Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'">
                     <span>Football Hub</span>
                 </a>
 
-                <!-- TASK 5: Time Display -->
                 <div class="datetime-display text-light ms-3 d-none d-lg-block"></div>
 
-                <!-- Hamburger button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#homeMenu" aria-label="Open navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,7 +60,6 @@
     </header>
 
 
-    <!-- ORIGINAL SIDEBAR -->
     <aside class="sidebar">
         <h3>Latest News</h3>
         <ul>
@@ -78,13 +77,11 @@
 
     <main class="main-content">
 
-        <!-- Original title -->
         <div id="box-1">
             <h1>Football Hub</h1>
             <p>Welcome to our main portal!</p>
         </div>
 
-        <!-- ASSIGNMENT 3 - TASK 3 Bootstrap Grid: 2 columns -->
         <section class="container px-sm-2">
             <h2>About Us</h2>
             <div class="row">
@@ -104,7 +101,6 @@
         </section>
 
 
-        <!-- ASSIGNMENT 5: DOM MANIPULATION / READ MORE -->
         <section class="container mt-4 px-sm-2 a5-panel">
             <h2>More About Football Hub</h2>
             <p>Football Hub brings players, matches, and football stories together.</p>
@@ -114,7 +110,6 @@
             <button type="button" id="read-more-btn" class="btn btn-dark" aria-controls="more-content" aria-expanded="false">Read More</button>
         </section>
 
-        <!-- ASSIGNMENT 5: EVENT LISTENER AND SWITCH -->
         <section class="container mt-4 px-sm-2 a5-panel">
             <h2>Football Fan Zone</h2>
             <p id="current-time" aria-live="polite">Press the button to show the current time.</p>
@@ -123,13 +118,11 @@
             <button type="button" id="greeting-btn" class="btn btn-success">Show Greeting</button>
         </section>
 
-        <!-- ASSIGNMENT 5: OBJECTS, ARRAYS AND LOOPS -->
         <section class="container mt-4 px-sm-2 a5-panel">
             <h2>Football Highlights</h2>
             <div id="football-news" class="row g-3"></div>
         </section>
 
-        <!-- ASSIGNMENT 3 - TASK 3 Bootstrap Grid: 3 columns -->
         <section class="container mt-4 px-sm-2">
             <h2>Football Hub Features</h2>
             <div class="row">
@@ -148,7 +141,6 @@
             </div>
         </section>
 
-        <!-- TASK 2: Accordion for FAQs -->
         <section class="container mt-4 px-sm-2">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-container">
@@ -163,8 +155,7 @@
             </div>
         </section>
 
-        <!-- ASSIGNMENT 3 - TASK 6: BUTTONS + TASK 3 & 4 BUTTONS -->
-        <section class="container mt-4 px-sm-2 mb-5">
+        <section class="container mt-4 px-sm-2 mb-4">
             <h2>Explore</h2>
             <div class="btn-group">
                 <a href="players.html" class="btn btn-outline-dark btn-sm">Players</a>
@@ -178,6 +169,55 @@
             </div>
         </section>
 
+        <section class="container mt-4 px-sm-2 a5-panel border-top pt-4">
+            <div class="mb-4">
+                <div class="search-wrapper position-relative" style="max-width: 500px;">
+                    <input type="text" id="a6-search-input" class="form-control" placeholder="Search news (e.g. 'Ronaldo', 'Messi')...">
+                    <ul id="a6-autocomplete-suggestions" class="dropdown-list"></ul>
+                </div>
+                <ul id="a6-content-list" class="list-unstyled mt-3">
+                    <li class="a6-content-item p-3 border mb-2 rounded bg-white shadow-sm">Cristiano Ronaldo scored a magnificent goal in the Champions League.</li>
+                    <li class="a6-content-item p-3 border mb-2 rounded bg-white shadow-sm">Lionel Messi received another best player award.</li>
+                    <li class="a6-content-item p-3 border mb-2 rounded bg-white shadow-sm">The new stadium for the 2026 World Cup final is ready.</li>
+                    <li class="a6-content-item p-3 border mb-2 rounded bg-white shadow-sm">Interview with the coach: how to win the Champions League.</li>
+                </ul>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex gap-4 flex-wrap">
+                    <div class="text-center p-4 bg-white rounded border shadow-sm" style="min-width: 200px;">
+                        <h4 class="counter text-success display-5 fw-bold" data-target="1500">0</h4>
+                        <p class="mb-0 text-muted">Active Fans</p>
+                    </div>
+                    <div class="text-center p-4 bg-white rounded border shadow-sm" style="min-width: 200px;">
+                        <h4 class="counter text-success display-5 fw-bold" data-target="350">0</h4>
+                        <p class="mb-0 text-muted">Matches Played</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <form id="a6-action-form" class="d-flex gap-2" style="max-width: 400px;">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                    <button type="submit" id="a6-submit-btn" class="btn btn-primary d-flex align-items-center gap-2">Submit</button>
+                </form>
+            </div>
+
+            <div class="mb-4">
+                <p class="fs-5">Promo code: <strong id="a6-promo-text" class="text-danger">FOOTBALL2026</strong></p>
+                <button id="a6-copy-btn" class="btn btn-outline-dark d-flex align-items-center gap-2" title="Copy to clipboard">
+                    <span>📋</span> Copy Code
+                </button>
+            </div>
+
+            <div class="mb-4">
+                <div class="d-flex gap-3 flex-wrap">
+                    <img src="https://via.placeholder.com/300x200?text=Loading..." data-src="css/images/Stadion.jpg" class="a6-lazy-image rounded shadow-sm" alt="Football Stadium">
+                    <img src="https://via.placeholder.com/300x200?text=Loading..." data-src="css/images/player1.jpg" class="a6-lazy-image rounded shadow-sm" alt="Cristiano Ronaldo">
+                </div>
+            </div>
+        </section>
+
     </main>
 
 
@@ -188,7 +228,6 @@
 
 </div>
 
-<!-- TASK 3: Popup Form HTML -->
 <div id="popup-overlay" class="popup-overlay">
     <div class="popup-content">
         <span class="close-btn" id="close-popup-btn">&times;</span>
@@ -202,10 +241,10 @@
     </div>
 </div>
 
-<!-- Needed for hamburger menu -->
+<div id="toast-container"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Assignment 4 JS -->
 <script src="js/script.js"></script>
 <script src="js/assignment5.js"></script>
 
