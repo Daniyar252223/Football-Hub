@@ -1,411 +1,101 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* LIGHT & DARK MODE CSS VARIABLES */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --box-bg: #e9ecef;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+    --box-bg: #2a2a2a;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f2f5;
-    color: #1a252f;
-}
-
-p {
-    color: #1a252f;
-    margin-bottom: 20px;
-}
-
-h1,
-h2,
-h3 {
-    color: #1a252f;
-    margin-bottom: 10px;
-}
-
-/* =========================================================
-   ORIGINAL PAGE LAYOUT
-========================================================= */
-.page-layout {
-    display: grid;
-    grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
-    grid-template-columns: 240px 1fr;
-    grid-template-rows: auto 1fr auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     min-height: 100vh;
-    gap: 20px;
-}
-
-.header {
-    grid-area: header;
-}
-
-.sidebar {
-    grid-area: sidebar;
-    background-color: white;
-    padding: 20px;
-    margin-left: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.sidebar h3 {
-    margin-bottom: 12px;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.small-text {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 5px;
-    margin-bottom: 0;
-}
-
-.main-content {
-    grid-area: main;
-    width: 95%;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-/* =========================================================
-   LOGO
-========================================================= */
-.logo {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    color: aliceblue;
-    font-weight: bold;
-    font-size: 1.2rem;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.logo img {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-/* =========================================================
-   BOOTSTRAP NAVBAR
-========================================================= */
-.navbar {
-    width: 100%;
-    padding: 15px 30px;
-}
-
-.navbar-brand {
-    color: aliceblue;
-}
-
-.navbar-brand:hover {
-    color: aliceblue;
-}
-
-.navbar .nav-link {
-    color: aliceblue;
-}
-
-.navbar .nav-link:hover {
-    color: #2ecc71;
-}
-
-/* =========================================================
-   ORIGINAL TITLE BOX
-========================================================= */
 #box-1 {
-    text-align: center;
-    background-color: #e9e9e9;
-    padding: 20px;
-    margin-bottom: 20px;
+    background-color: var(--box-bg);
 }
 
-/* =========================================================
-   ORIGINAL IMAGES
-========================================================= */
-.Images {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 5px;
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* =========================================================
-   MATCH TABLE
-========================================================= */
-.match-table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-.match-table th {
-    background-color: #1a252f;
-    color: white;
-    padding: 12px;
-}
-
-.match-table td {
-    color: #1a252f;
-    padding: 12px;
-    border-bottom: 1px solid #333333;
-    text-align: center;
-}
-
-/* =========================================================
-   ORIGINAL GALLERY
-========================================================= */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.gallery-item {
-    position: relative;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item .overlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-item:hover .overlay {
-    opacity: 1;
-}
-
-/* =========================================================
-   BOOTSTRAP PLAYER CARDS
-========================================================= */
-.player-bootstrap-img {
-    width: 100%;
+.player-img {
     height: 300px;
-    object-fit: contain;
-    background-color: white;
-}
-
-/* =========================================================
-   TASK 7 CAROUSEL
-========================================================= */
-.carousel-img {
-    height: 420px;
-    object-fit: contain;
-    background-color: #1a252f;
-}
-
-/* =========================================================
-   SIMPLE HEADER
-========================================================= */
-.simple-header {
-    background-color: grey;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-}
-
-/* =========================================================
-   TASK PAGES
-========================================================= */
-.task-page {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-    min-height: 70vh;
-}
-
-/* =========================================================
-   TASK 1 - RESPONSIVE TYPOGRAPHY
-========================================================= */
-.responsive-title {
-    font-size: 48px;
-}
-
-.responsive-text {
-    font-size: 22px;
-}
-
-.responsive-heading {
-    font-size: 32px;
-}
-
-.responsive-paragraph {
-    font-size: 20px;
-}
-
-/* =========================================================
-   TASK 2 - CARD GROUP
-========================================================= */
-.task2-card-group {
-    display: flex;
-    gap: 20px;
-}
-
-.task2-card {
-    width: calc(33.33% - 14px);
-    background-color: white;
-    border: 2px solid #ddd;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-}
-
-.task2-card img {
-    width: 120px;
-    height: 120px;
     object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    object-position: top center; /* Фокусты ортадан жоғарыға (басына) ауыстырамыз */
 }
 
-.task2-card h3 {
-    margin-bottom: 10px;
+.carousel-img {
+    height: 400px;
+    object-fit: cover;
+}
+/* NAVBAR AUTH BUTTON FIX */
+#auth-link .btn {
+    font-weight: 600;
+    border-radius: 50rem !important;
+    padding: 6px 18px !important;
+    transition: all 0.3s ease;
 }
 
-.task2-card p {
-    margin-bottom: 10px;
+#auth-link .btn-outline-light {
+    color: #ffffff !important;
+    border: 1.5px solid #ffffff !important;
+    background-color: transparent !important;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
-footer {
-    grid-area: footer;
-    background-color: white;
-    color: black;
-    text-align: center;
-    padding: 15px;
-    margin-top: 30px;
+#auth-link .btn-outline-light:hover {
+    color: #1a252f !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
 }
 
-footer p {
-    margin-bottom: 0;
+/* Profile (кіріп тұрғандағы) батырмасы */
+#auth-link .btn-outline-info {
+    color: #0dcaf0 !important;
+    border: 1.5px solid #0dcaf0 !important;
+    background-color: transparent !important;
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
-@media (max-width: 900px) {
-    .page-layout {
-        grid-template-areas:
-            "header"
-            "main"
-            "sidebar"
-            "footer";
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        margin: 10px 20px;
-    }
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .responsive-title {
-        font-size: 38px;
-    }
-    .responsive-text {
-        font-size: 19px;
-    }
-    .responsive-heading {
-        font-size: 28px;
-    }
-    .responsive-paragraph {
-        font-size: 18px;
-    }
-    .task2-card-group {
-        flex-wrap: wrap;
-    }
-    .task2-card {
-        width: calc(50% - 10px);
-    }
-    .carousel-img {
-        height: 350px;
-    }
+#auth-link .btn-outline-info:hover {
+    color: #121212 !important;
+    background-color: #0dcaf0 !important;
+    box-shadow: 0 4px 14px rgba(13, 202, 240, 0.4);
+    transform: translateY(-2px);
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
-@media (max-width: 576px) {
-    .responsive-title {
-        font-size: 28px;
-    }
-    .responsive-text {
-        font-size: 16px;
-    }
-    .responsive-heading {
-        font-size: 24px;
-    }
-    .responsive-paragraph {
-        font-size: 16px;
-    }
-    .task2-card-group {
-        flex-direction: column;
-    }
-    .task2-card {
-        width: 100%;
-    }
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    .main-content {
-        width: 100%;
-        margin: 10px 0;
-    }
-    .carousel-img {
-        height: 250px;
-    }
-}
-
-/* =========================================================
-   ASSIGNMENT 4 - JAVASCRIPT STYLES
-========================================================= */
-
-/* --- TASK 2: Accordion CSS --- */
+/* FAQ Accordion Styling (Light & Dark Mode compatible) */
 .faq-question {
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: var(--box-bg);
+    color: var(--text-color);
     cursor: pointer;
     padding: 15px;
     width: 100%;
     text-align: left;
-    border: none;
+    border: 1px solid var(--border-color);
     outline: none;
-    transition: 0.4s;
+    transition: background-color 0.3s ease;
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
@@ -413,256 +103,90 @@ footer p {
 }
 
 .faq-question:hover, .faq-question.active {
-    background-color: #ddd;
+    background-color: var(--border-color);
 }
 
 .faq-answer {
     padding: 0 15px;
-    background-color: white;
+    background-color: var(--card-bg);
+    color: var(--text-color);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     border-radius: 0 0 5px 5px;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .faq-answer p {
     margin: 15px 0;
 }
 
-/* --- TASK 3: Popup Form CSS --- */
-.popup-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
+[data-theme="dark"] .card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: #333333 !important;
 }
 
-.popup-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+/* Көмбіс/сұр мәтіндерді ақшыл-сұрға ауыстыру */
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] .text-secondary {
+    color: #cbd5e1 !important;
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
+/* Copy Code батырмасын Dark Mode-қа бейімдеу */
+[data-theme="dark"] #a6-copy-btn,
+[data-theme="dark"] .btn-outline-dark {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    background-color: transparent !important;
 }
 
-.close-btn:hover {
-    color: red;
+[data-theme="dark"] #a6-copy-btn:hover,
+[data-theme="dark"] .btn-outline-dark:hover {
+    color: #121212 !important;
+    background-color: #ffffff !important;
 }
 
-/* =========================================================
-   ASSIGNMENT 5 - JAVASCRIPT STYLES
-========================================================= */
-
-/* --- TASK 1: General Panel CSS --- */
-.a5-panel {
-    padding-top: 12px;
-    padding-bottom: 12px;
+/* Сұр фонды блоктарды қараңғы режимге бейімдеу */
+[data-theme="dark"] #box-1,
+[data-theme="dark"] .bg-light {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: #333333 !important;
 }
 
-/* --- TASK 1: Read More CSS --- */
-#more-content {
-    background: #f4f7fa;
-    border-left: 4px solid #0d6efd;
-    border-radius: 6px;
-    padding: 14px;
-    margin-bottom: 12px;
+/* -------------------------------------------------------------
+ * MORE ABOUT FOOTBALL HUB SECTION STYLING (LIGHT & DARK MODE)
+ * ------------------------------------------------------------- */
+.more-about-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #212529;
 }
 
-#more-content[hidden] {
-    display: none !important;
+.more-about-desc {
+    font-size: 1.15rem;
+    color: #6c757d;
 }
 
-/* --- TASK 2: Current Time and Greeting CSS --- */
-#current-time,
-#greeting-message {
-    font-weight: 600;
-    margin-top: 10px;
+[data-theme="dark"] .more-about-title {
+    color: #ffffff !important;
 }
 
-/* --- TASK 3: Football News Cards CSS --- */
-.a5-news-card {
-    height: 100%;
-    padding: 18px;
-    border-radius: 10px;
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+[data-theme="dark"] .more-about-desc {
+    color: #cbd5e1 !important;
 }
 
-.a5-news-card:hover,
-.a5-news-card:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
+[data-theme="dark"] #read-more-btn {
+    background-color: #6b7280 !important;
+    border-color: #6b7280 !important;
+    color: #ffffff !important;
 }
 
-.a5-news-card.a5-celebrate {
-    animation: a5Pulse 0.45s ease;
-}
-
-/* --- TASK 3: News Card Animation CSS --- */
-@keyframes a5Pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.04);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* --- TASK 3: Player Card Animation CSS --- */
-.player-animate {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.player-animate:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
-}
-
-/* --- TASK 3: Match Gallery Animation CSS --- */
-.gallery-item {
-    transition: transform 0.25s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.025);
-}
-
-/* --- TASK 2: Contact Form Feedback CSS --- */
-#form-errors {
-    min-height: 1.5rem;
-}
-
-/* --- TASK 5: Accessibility and User Experience CSS --- */
-@media (prefers-reduced-motion: reduce) {
-    .a5-news-card,
-    .player-animate,
-    .gallery-item {
-        transition: none;
-    }
-
-    .a5-news-card.a5-celebrate {
-        animation: none;
-    }
-}
-
-/* =========================================================
-   ASSIGNMENT 6 - JQUERY STYLES
-========================================================= */
-
-/* Task 4: Scroll Progress */
-#scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 5px;
-    background: linear-gradient(90deg, #0d6efd, #ffcc00);
-    z-index: 2000;
-    transition: width 0.1s ease-out;
-}
-
-/* Task 7: Toast Notifications */
-#toast-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-}
-
-.a6-toast {
-    background-color: #212529;
-    color: #fff;
-    padding: 15px 25px;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    display: none;
-    font-weight: 500;
-}
-
-/* Task 3: Highlight */
-.a6-highlight {
-    background-color: #ffeb3b;
-    font-weight: bold;
-    color: #000;
-    padding: 0 2px;
-    border-radius: 2px;
-}
-
-/* Task 2: Autocomplete Dropdown */
-.dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: white;
-    border: 1px solid #ddd;
-    border-top: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-    z-index: 100;
-    max-height: 200px;
-    overflow-y: auto;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.dropdown-list li {
-    padding: 10px 15px;
-    cursor: pointer;
-    color: #333;
-    border-bottom: 1px solid #f9f9f9;
-}
-
-.dropdown-list li:hover {
-    background-color: #f1f1f1;
-}
-
-/* Task 6: Spinner */
-.a6-spinner {
-    border: 2px solid rgba(255,255,255,0.3);
-    border-top: 2px solid #fff;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    animation: a6spin 1s linear infinite;
-    display: inline-block;
-}
-@keyframes a6spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* Task 9: Lazy Load */
-.a6-lazy-image {
-    width: 100%;
-    max-width: 300px;
-    height: 200px;
-    object-fit: cover;
-    transition: opacity 0.6s ease-in;
-    opacity: 0.3;
-}
-.a6-lazy-image.loaded {
-    opacity: 1;
+[data-theme="dark"] #more-info-box {
+    background-color: var(--card-bg) !important;
+    color: #ffffff !important;
+    border-left-color: #0d6efd !important;
 }
