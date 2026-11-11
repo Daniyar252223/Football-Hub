@@ -1,153 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Football Hub - Player Profiles</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Football Hub - Players</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-<div class="page-layout">
-
-    <!-- TASK 5: BOOTSTRAP NAVBAR -->
     <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary px-3">
+            <a class="navbar-brand logo d-flex align-items-center gap-2" href="index.html">
+                <img src="css/images/logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'" width="30">
+                <span>Football Hub</span>
+            </a>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-            <div class="container-fluid">
-                <a class="navbar-brand logo" href="index.html">
-                    <img src="css/images/logo.png" alt="Football Hub Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png'">
-                    <span>Football Hub</span>
-                </a>
-
-                <!-- TASK 5: Time Display -->
-                <div class="datetime-display text-light ms-3 d-none d-lg-block"></div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#playersMenu" aria-label="Open navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="playersMenu">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="players.html">Players</a></li>
-                        <li class="nav-item"><a class="nav-link" href="matches.html">Matches</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
+            <span id="live-clock" class="text-light ms-3 opacity-75 small d-none d-md-inline"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="players.html">Players</a></li>
+                    <li class="nav-item"><a class="nav-link" href="matches.html">Matches</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item" id="auth-link"><a class="nav-link btn btn-outline-light btn-sm px-3" href="auth.html">Log In</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button id="theme-toggle" class="btn btn-sm btn-warning">🌙 Dark</button>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
 
-    <!-- ORIGINAL SIDEBAR -->
-    <aside class="sidebar">
-        <h3>Top Scorers</h3>
-        <ul>
-            <li>C. Ronaldo - 979 goals</li>
-            <li>H. Kane - 531 goals</li>
-            <li>K. Mbappé - 429 goals</li>
-            <li>L. Yamal - 56 goals</li>
-        </ul>
-    </aside>
+    <main class="container my-4">
+        <h1 class="mb-4">Player Profiles & Stats</h1>
 
-    <main class="main-content">
-
-        <div id="box-1">
-            <h1>Top Players</h1>
-            <p>Profiles</p>
+        <!-- Filter & Search Section -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <input type="text" id="player-search" class="form-control" placeholder="Search player by name...">
+            </div>
+            <div class="col-md-6">
+                <select id="position-filter" class="form-select">
+                    <option value="all">All Positions</option>
+                    <option value="Striker">Striker</option>
+                    <option value="Winger">Winger</option>
+                </select>
+            </div>
         </div>
 
-        <!-- TASK 8: BOOTSTRAP CARDS -->
-        <section class="container px-sm-2">
-            <h2 class="mb-3">Player Profiles</h2>
-            <div class="row g-3">
-
-                <!-- Ronaldo -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="css/images/player1.jpg" class="card-img-top player-bootstrap-img" alt="Cristiano Ronaldo">
-                        <div class="card-body">
-                            <h3 class="card-title">Cristiano Ronaldo</h3>
-                            <p class="card-text">Position: Striker</p>
-                            <p class="card-text">Achievements: 979 goals</p>
-                            <button class="btn btn-dark">View Profile</button>
-                        </div>
+        <div class="row g-3" id="players-list">
+            <div class="col-12 col-md-6 col-lg-3 player-card-wrapper" data-name="Cristiano Ronaldo" data-position="Striker">
+                <div class="card h-100 player-card">
+                    <img src="css/images/player1.jpg" class="card-img-top player-img" alt="Cristiano Ronaldo">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Cristiano Ronaldo</h3>
+                        <p class="card-text mb-1"><strong>Position:</strong> Striker</p>
+                        <p class="card-text"><strong>Goals:</strong> 979</p>
                     </div>
                 </div>
-
-                <!-- Kane -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="css/images/player2.jpeg" class="card-img-top player-bootstrap-img" alt="Harry Kane">
-                        <div class="card-body">
-                            <h3 class="card-title">Harry Kane</h3>
-                            <p class="card-text">Position: Striker</p>
-                            <p class="card-text">Achievements: 531 goals</p>
-                            <button class="btn btn-secondary">View Profile</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mbappe -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="css/images/player3.webp" class="card-img-top player-bootstrap-img" alt="Kylian Mbappe">
-                        <div class="card-body">
-                            <h3 class="card-title">Kylian Mbappé</h3>
-                            <p class="card-text">Position: Left Winger</p>
-                            <p class="card-text">Achievements: 429 goals</p>
-                            <button class="btn btn-outline-dark">View Profile</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Yamal -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="css/images/player4.jpeg" class="card-img-top player-bootstrap-img" alt="Lamine Yamal">
-                        <div class="card-body">
-                            <h3 class="card-title">Lamine Yamal</h3>
-                            <p class="card-text">Position: Right Winger</p>
-                            <p class="card-text">Achievements: 56 goals</p>
-                            <button class="btn btn-dark">View Profile</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
-
-        <!-- TASK 6: BUTTON GROUP -->
-        <section class="container mt-4 px-sm-2">
-            <div class="btn-group">
-                <button class="btn btn-outline-dark btn-sm">Previous</button>
-                <button class="btn btn-dark">Players</button>
-                <button class="btn btn-outline-dark btn-lg">Next</button>
+            <div class="col-12 col-md-6 col-lg-3 player-card-wrapper" data-name="Harry Kane" data-position="Striker">
+                <div class="card h-100 player-card">
+                    <img src="css/images/player2.jpeg" class="card-img-top player-img" alt="Harry Kane">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Harry Kane</h3>
+                        <p class="card-text mb-1"><strong>Position:</strong> Striker</p>
+                        <p class="card-text"><strong>Goals:</strong> 531</p>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section class="container mt-4">
-            <h2>More other information will be added in the future</h2>
-        </section>
-
+            <div class="col-12 col-md-6 col-lg-3 player-card-wrapper" data-name="Kylian Mbappe" data-position="Winger">
+                <div class="card h-100 player-card">
+                    <img src="css/images/player3.webp" class="card-img-top player-img" alt="Kylian Mbappé">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Kylian Mbappé</h3>
+                        <p class="card-text mb-1"><strong>Position:</strong> Winger</p>
+                        <p class="card-text"><strong>Goals:</strong> 429</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 player-card-wrapper" data-name="Lamine Yamal" data-position="Winger">
+                <div class="card h-100 player-card">
+                    <img src="css/images/player4.jpeg" class="card-img-top player-img" alt="Lamine Yamal">
+                    <div class="card-body">
+                        <h3 class="card-title h5">Lamine Yamal</h3>
+                        <p class="card-text mb-1"><strong>Position:</strong> Winger</p>
+                        <p class="card-text"><strong>Goals:</strong> 56</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>Team members: Daribayev Daniyar, Nurbol Kassymbaev</p>
-        <p class="datetime-display d-lg-none mt-2 mb-0"></p>
+    <footer class="text-center py-3 border-top mt-auto">
+        <p class="mb-0">Team members: Daribayev Daniyar, Nurbol Kassymbaev</p>
     </footer>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="js/script.js"></script>
-<script src="js/assignment5.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
