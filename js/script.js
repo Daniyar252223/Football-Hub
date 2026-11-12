@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // -------------------------------------------------------------
-   // 2. AUTH NAVIGATION CHECK
-  // -------------------------------------------------------------
+    // 2. AUTH NAVIGATION CHECK
+    // -------------------------------------------------------------
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const authLinkContainer = document.getElementById("auth-link");
 
     if (authLinkContainer && currentUser) {
-    authLinkContainer.innerHTML = `<a class="btn btn-outline-info btn-sm" href="profile.html">👤 ${currentUser.name}</a>`;
+        authLinkContainer.innerHTML = `<a class="btn btn-outline-info btn-sm" href="profile.html">👤 ${currentUser.name}</a>`;
     }
 
     // Profile Page Logic
@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // -------------------------------------------------------------
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+?[0-9]{9,15}$/;
+    const passComplexityRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
     function showError(element, text) {
         if (!element) return;
@@ -131,7 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!name) return showError(errDiv, "Full Name is required.");
             if (!emailRegex.test(email)) return showError(errDiv, "Invalid email format.");
             if (!phoneRegex.test(phone)) return showError(errDiv, "Invalid phone number pattern.");
-            if (pass.length < 6) return showError(errDiv, "Password must be at least 6 characters long.");
+            if (!passComplexityRegex.test(pass)) {
+                return showError(errDiv, "Password must be at least 6 characters and include both letters and numbers.");
+            }
 
             let users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
             
@@ -146,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("registeredUsers", JSON.stringify(users));
             localStorage.setItem("currentUser", JSON.stringify(newUser));
             
-          
             window.location.href = "profile.html";
         });
     }
@@ -184,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // -------------------------------------------------------------
-    // CONTACT FORM SUBMISSION WITH SUCCESS ALERT 
+    // CONTACT FORM SUBMISSION WITH FULL VALIDATION & SUCCESS ALERT
     // -------------------------------------------------------------
     const contactForm = document.getElementById("contact-form");
     const contactError = document.getElementById("contact-error");
@@ -199,11 +201,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const phone = document.getElementById("contact-phone").value.trim();
             const message = document.getElementById("contact-msg").value.trim();
 
-            if (!name || !email || !phone || !message) {
-                if (contactError) {
-                    contactError.textContent = "Please fill in all fields before submitting!";
-                    contactError.classList.remove("d-none");
-                }
+            if (!name) {
+                showError(contactError, "Name is required.");
+                if (contactSuccess) contactSuccess.classList.add("d-none");
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                showError(contactError, "Please enter a valid email format.");
+                if (contactSuccess) contactSuccess.classList.add("d-none");
+                return;
+            }
+            if (!phoneRegex.test(phone)) {
+                showError(contactError, "Invalid phone number (e.g. +77006261007).");
+                if (contactSuccess) contactSuccess.classList.add("d-none");
+                return;
+            }
+            if (!message) {
+                showError(contactError, "Message field cannot be empty.");
                 if (contactSuccess) contactSuccess.classList.add("d-none");
                 return;
             }
@@ -221,6 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 4000);
         });
     }
+
     // -------------------------------------------------------------
     // 5. EXTERNAL API INTEGRATION & SEARCH LOGIC
     // -------------------------------------------------------------
@@ -231,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("api-search-input");
     const searchBtn = document.getElementById("api-search-btn");
 
-   
     const fallbackTeams = [
         { 
             strTeam: "Arsenal FC", 
@@ -287,7 +301,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         teams.forEach(team => {
-            
             const imgSrc = team.strBadge || team.onlineBadge || 'https://cdn-icons-png.flaticon.com/512/53/53283.png';
             const fallbackSrc = team.onlineBadge || 'https://cdn-icons-png.flaticon.com/512/53/53283.png';
 
@@ -342,6 +355,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function saveSearch(term) {
+        let searches = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+        if (!searches.includes(term)) {
+            searches.unshift(term);
+            if (searches.length > 5) searches.pop();
+            localStorage.setItem("recentSearches", JSON.stringify(searches));
+        }
+    }
+
     if (apiContainer) {
         fetchLeagueTeams();
 
@@ -355,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const handleSearch = () => {
             const term = searchInput ? searchInput.value.trim() : "";
             fetchLeagueTeams(term);
-            if (term && typeof saveSearch === "function") saveSearch(term);
+            if (term) saveSearch(term);
         };
 
         if (searchBtn) searchBtn.addEventListener("click", handleSearch);
@@ -405,10 +427,8 @@ function updateLiveClock() {
 
     const now = new Date();
     
-
     const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
     const dateStr = now.toLocaleDateString('en-US', dateOptions);
-    
     
     const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
     const timeStr = now.toLocaleTimeString('en-US', timeOptions);
