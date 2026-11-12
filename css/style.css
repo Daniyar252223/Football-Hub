@@ -43,7 +43,7 @@ body {
 .player-img {
     height: 300px;
     object-fit: cover;
-    object-position: top center; /* Фокусты ортадан жоғарыға (басына) ауыстырамыз */
+    object-position: top center; 
 }
 
 .carousel-img {
@@ -71,7 +71,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Profile (кіріп тұрғандағы) батырмасы */
+/* Profile when we entered button*/
 #auth-link .btn-outline-info {
     color: #0dcaf0 !important;
     border: 1.5px solid #0dcaf0 !important;
@@ -129,13 +129,13 @@ body {
     border-color: #333333 !important;
 }
 
-/* Көмбіс/сұр мәтіндерді ақшыл-сұрға ауыстыру */
+
 [data-theme="dark"] .text-muted,
 [data-theme="dark"] .text-secondary {
     color: #cbd5e1 !important;
 }
 
-/* Copy Code батырмасын Dark Mode-қа бейімдеу */
+
 [data-theme="dark"] #a6-copy-btn,
 [data-theme="dark"] .btn-outline-dark {
     color: #ffffff !important;
@@ -149,7 +149,7 @@ body {
     background-color: #ffffff !important;
 }
 
-/* Сұр фонды блоктарды қараңғы режимге бейімдеу */
+
 [data-theme="dark"] #box-1,
 [data-theme="dark"] .bg-light {
     background-color: var(--card-bg) !important;
